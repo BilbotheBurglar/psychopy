@@ -105,14 +105,15 @@ class ResponsepixxComponent(BaseComponent):
 
 
         # if STARTED and not FINISHED!
-        code = "if {}.status == STARTED:".format(self.params["name"])
-        code += "prevButtonState = {}.getKeys()\n".format(self.params["name"])
+        code = "if {}.status == STARTED:\n".format(self.params["name"])
         buff.writeIndented(code)
         buff.setIndentLevel(1, relative=True)
+        code = "prevButtonState = {}.getKeys()\n".format(self.params["name"])
+        buff.writeIndented(code)
         code = "if len(prevButtonState)>0:\n"
         buff.writeIndented(code)
         buff.setIndentLevel(1, relative=True)
-        code = "{}Resp.append(prevButton[-1])\n".format(self.params["name"])
+        code = "{}Resp.append(prevButtonState[-1])\n".format(self.params["name"])
         buff.writeIndented(code)
         if forceEnd:
             code ="routineForceEnded = True #end routine on click\n"
