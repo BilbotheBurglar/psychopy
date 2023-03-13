@@ -100,8 +100,6 @@ class ResponsepixxComponent(BaseComponent):
 
         # test for stop (only if there was some setting for duration or stop)
         self.writeStopTestCode(buff)
-        # to get out of the if statement
-        buff.setIndentLevel(-1, relative=True)
 
 
         # if STARTED and not FINISHED!
